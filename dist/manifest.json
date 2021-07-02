@@ -1,0 +1,31 @@
+{
+	"name": "Block test",
+	"version": "0.1.0",
+	"description": "censored xxx.",
+	"author": "k",
+	"permissions": [
+		"system.cpu",
+		"activeTab",
+		"declarativeContent",
+		"webRequest",
+		"webRequestBlocking",
+		"<all_urls>",
+		"storage",
+		"tabs"
+	],
+	"background": {
+		"scripts": ["src/background.js"],
+		"persistent": true
+	},
+	"content_scripts": [{
+		"matches": ["http://*/*", "https://*/*"],
+		"js": ["src/content.js"],
+		"run_at": "document_start",
+		"all_frames": true
+	}],
+	"web_accessible_resources": [
+		"model/*"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"manifest_version": 2
+}
